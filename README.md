@@ -114,4 +114,62 @@
         coin.addEventListener("click", flipCoin);
     </script>
 </body>
+</html>            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 15px;
+            min-height: 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Coin Flip</h1>
+
+        <div class="message">
+            Having a hard time deciding?<br>
+            Take a deep breath and flip a coin.
+        </div>
+
+        <div class="coin" id="coin">HEADS</div>
+
+        <button id="flipBtn">Flip Coin</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const coin = document.getElementById("coin");
+        const button = document.getElementById("flipBtn");
+        const result = document.getElementById("result");
+
+        function flipCoin() {
+            const isHeads = Math.random() < 0.5;
+
+            coin.style.transform = "rotateY(360deg)";
+
+            setTimeout(() => {
+                coin.textContent = isHeads ? "HEADS" : "TAILS";
+                result.textContent = "Result: " + coin.textContent;
+                coin.style.transform = "rotateY(0deg)";
+            }, 500);
+        }
+
+        button.addEventListener("click", flipCoin);
+        coin.addEventListener("click", flipCoin);
+    </script>
+</body>
 </html>
